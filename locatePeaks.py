@@ -46,13 +46,15 @@ class ReadData:
 				pass
 			else:
 				data = self.datalines[i].split(" ")
-				self.time.append(float(data[0]))
-				self.temperature.append(float(data[1]))
-				self.pulse.append(float(data[2].replace("\n","")))
-		self.time = np.array(self.time)
-		self.temperature = np.array(self.temperature)
-		self.pulse = np.array(self.pulse)
+				self.time = np.insert(self.time, len(self.time), float(data[0]))
+				self.temperature = np.insert(self.temperature, len(self.temperature), float(data[1]))
+				self.pulse = np.insert(self.pulse, len(self.pulse), float(data[2].replace("\n","")))
 		
+	def clearData(self):
+		self.time = []
+		self.temperature = []
+		self.pulse = []
+
 def main():
 
 	data = ReadData("testLog")
