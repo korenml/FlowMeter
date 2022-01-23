@@ -1,12 +1,12 @@
-##########################################
-## Name: Flow meter gui script			##
+########################################
+## Name: Flow meter gui script		##
 ## Author: Tomas Korinek				##
-## Last update: 16.11.2021				##
-## Version: 3							##
-##			3 - class based gui			##
+## Last update: 16.11.2021			##
+## Version: 3						##
+##			3 - class based gui		##
 ##			2 - button functions		##
-##			1 - function based gui		##
-##########################################
+##			1 - function based gui	##
+########################################
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -148,8 +148,11 @@ class FlowMeter():
 		print("stop")
 	
 	def saveClicked(self, event):
-		with open("outputFile", "w") as f:
-			f.write("Data\n")
+		with open("outputFile.csv", "w") as f:
+			f.write("# Time, Volumetric flow\n")
+			for i, tF in enumerate(self.tF, start=0):
+				stream = str(self.tF[i]) + "," + str(self.volFlow[i]) + "\n"
+				f.write(stream)
 		print("save")
 
 	def myTime(self):

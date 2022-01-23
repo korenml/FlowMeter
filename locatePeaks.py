@@ -69,12 +69,15 @@ def main():
 
 	fig, axs = plt.subplots(3,1)	
 	axs[0].set_ylim(0,2)
+	axs[0].set_xlim(0,50)
 	axs[0].plot(time,pulse)
 	axs[0].scatter(time[peaksP],pulse[peaksP],s=15,marker="x",color="black")
 	axs[1].plot(time,temperature)
 	axs[1].scatter(time[peaksT],temperature[peaksT],s=15,marker="x",color="black")
 	axs[1].set_ylim(280,320)
+	axs[1].set_xlim(0,50)
 	axs[2].plot(timeF,flowTime)
+	axs[2].set_xlim(0,50)
 	axs[2].set_ylim(np.min(flowTime)-1,np.max(flowTime)+1)
 	plt.show()
 	
